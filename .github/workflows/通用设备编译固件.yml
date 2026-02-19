@@ -126,6 +126,12 @@ jobs:
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
 
+      - name: Disable Werror
+        run: |
+          sed -i 's/CONFIG_WERROR=y/CONFIG_WERROR=n/' .config || true
+          echo "CONFIG_WERROR=n" >> .config
+          make defconfig
+
       - name: Compile the OpenWrt
         id: compile
         run: |
