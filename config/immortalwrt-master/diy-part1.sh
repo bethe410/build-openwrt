@@ -12,3 +12,6 @@
 # other
 # rm -rf package/emortal/{autosamba,ipv6-helper}
 
+# hardware mod
+sed -i '/define Device\/tplink_tl-wr740n-v5/,/endef/{s/  \$(Device\/tplink-4mlzma)/  $(Device\/tplink-16mlzma)/}' target/linux/ath79/image/tiny-tp-link.mk
+sed -i '/switch-phy-addr-swap\|switch-phy-swap/s/<1>/<0>/g' target/linux/ath79/dts/ar9331_tplink_tl-wr741nd-v4.dtsi
